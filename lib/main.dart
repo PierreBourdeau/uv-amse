@@ -22,12 +22,12 @@ final series = [
 
 final bds = [
   MediaModel(
-    imageUrl: 'images/bds/aldebaran.jpg',
+    imageUrl: 'ressources/Aldebaran.jpg',
     title: 'Aldébaran',
     description: "Les mondes d'Aldébaran ...",
   ),
   MediaModel(
-    imageUrl: 'images/bds/le_tueur.jpg',
+    imageUrl: 'ressources/le_tueur.jpg',
     title: 'Le tueur',
     description: "Bd cynique sur le monde...",
   ),
@@ -77,11 +77,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         child: ListTile(
           onTap: (){},
           title: Text(bds[index].title),
-          trailing: Image.network(bds[index].imageUrl),
+          trailing: Image(image: AssetImage(bds[index].imageUrl)),
           subtitle: Text(bds[index].description),
         ),
       );
-    }, itemCount: series.length, padding: const EdgeInsets.all(8),)
+    }, itemCount: bds.length, padding: const EdgeInsets.all(8),)
   ];
 
 
