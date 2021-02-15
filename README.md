@@ -17,3 +17,5 @@ Tous les fichiers nécessairent au fonctionnement de l'application sont trouvabl
 Un .apk est également fourni.
 
 Les tests ont étés réalisés sur émulateur : sdk gphone x86.
+
+* L'APK : `build\app\outputs\apk\release`
