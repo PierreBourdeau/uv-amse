@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 final Color theme = Colors.grey[850];
+final titleTheme = TextStyle(color: Colors.grey[800], fontWeight: FontWeight.bold, fontSize: 30);
 final series = [
   MediaModel(
     imageUrl:
@@ -38,7 +39,7 @@ final musiques = [
   MediaModel(
     imageUrl: 'https://i.ytimg.com/vi/2BFgh8o_Jno/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLBUnZSwcwl8ZPvcEfDxQWFJ-ho6WA',
     title: 'Les lacs du Connemara',
-    description: 'Provided to YouTube by Universal Music Group | Les lacs du Connemara · Michel Sardou | Les Lacs Du Connemara | 1981 Mercury Music Group'
+    description: 'Provided to YouTube by Universal Music Group | Les lacs du Connemara · Michel Sardou | Les Lacs Du Connemara | 1981 Mercury Music Group',
   ),
   MediaModel(
     imageUrl: 'https://i.ytimg.com/an_webp/rygifBeBKUU/mqdefault_6s.webp?du=3000&sqp=CPbLpoEG&rs=AOn4CLAciZL9-ulYuFgeRe6M-NOX2q2MMQ',
@@ -51,6 +52,7 @@ final musiques = [
     description: 'ElGrandeToto - Mghayer 3ème extrait de l\'album "CAMELEON", disponible le 5 Mars 2021 sur toutes les plateformes digitales.',
   )
 ];
+
 void main() => runApp(MyApp());
 
 /// This is the main application widget.
@@ -132,6 +134,19 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         ),
       );
     }, itemCount: series.length, padding: const EdgeInsets.all(8),),
+    Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget> [
+          Text(
+              'UV AMSE - Flutter',
+              style: titleTheme),
+          Expanded(child: FittedBox(
+            fit: BoxFit.contain,
+            child: const FlutterLogo(),
+          )),
+          Text('Application réalisée par : Pierre Bourdeau dans le cadre de l\'UV AMSE', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),),
+        ]
+    ),
   ];
 
 
@@ -152,6 +167,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         backgroundColor: theme,
         unselectedItemColor: Colors.white,
         items: const <BottomNavigationBarItem>[
@@ -160,13 +176,16 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             label:'Series',
           ),
           BottomNavigationBarItem(
-
             icon: Icon(Icons.library_books, color: Colors.white,),
             label: 'BD',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.music_note, color: Colors.white,),
             label: 'Musique'
+          ),
+         BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle, color: Colors.white,),
+            label: 'A propos',
           ),
         ],
         currentIndex: _selectedIndex,
@@ -189,10 +208,10 @@ class MediaModel {
 Widget typeDeModel (MediaModel m) {
   Widget image;
   if(series.contains(m) || musiques.contains(m)) {
-    image = Image.network(m.imageUrl, height: 350,);
+    image = Image.network(m.imageUrl, height: 400,);
   }
   else if (bds.contains(m) ) {
-    image =Image(image: AssetImage(m.imageUrl));
+    image =Image(image: AssetImage(m.imageUrl), height: 400,);
   }
   else
     image = Icon(Icons.broken_image, size: 50);
@@ -210,14 +229,15 @@ class Page2 extends StatelessWidget {
       appBar: AppBar(title: Text(tab.title),backgroundColor: theme,),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget> [
               Text(
                   tab.title,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32.0)),
+                  style: titleTheme),
               vignette,
               Text(tab.description),
               RaisedButton(
-                color: Colors.blue,
+                color: Colors.red[600],
                 onPressed: (){
                   Navigator.of(context)
                       .pop();
