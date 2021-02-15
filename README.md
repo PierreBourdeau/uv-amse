@@ -15,3 +15,5 @@ Les éléments de l'application sont fournis en dur via des listes de `MediaMode
 
 Tous les fichiers nécessairent au fonctionnement de l'application sont trouvable dans la branche **master** sur ce git.
 Un .apk est également fourni.
+
+Les tests ont étés réalisés sur émulateur : sdk gphone x86.
